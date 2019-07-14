@@ -1,0 +1,35 @@
+{
+  "layer": "top",
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["custom/media", "network", "temperature", "cpu", "memory", "clock"],
+  "sway/window": {
+    "max-length": 50
+  },
+  "network": {
+    "tooltip": false,
+    "interval": 5,
+    "format": "⬇ {bandwidthDownOctets} ⬆ {bandwidthUpOctets}"
+  },
+  "temperature": {
+    "thermal-zone": 2,
+    "format": " {temperatureC}°C"
+  },
+  "cpu": {
+    "tooltip": false,
+    "format": " {}%"
+  },
+  "memory": {
+    "tooltip": false,
+    "format": " {used:0.1f}G / {total:0.1f}G"
+  },
+  "custom/media": {
+    "format": " {}",
+    "on-click": "playerctl --player spotify next",
+    "on-click-right": "playerctl --player spotify play-pause",
+    "return-type": "json",
+    "max-length": 40,
+    "escape": true,
+    "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Script in resources folder
+  }
+}
